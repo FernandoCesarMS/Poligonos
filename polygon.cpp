@@ -46,9 +46,12 @@ bool RightRectangle::contains(const Point& p) const {
 }
 
 Point::Point(int xx, int yy): x(xx), y(yy) {
-  // TODO: implement this method.
+  limits.push_back(*this);
 }
 
 RightRectangle::RightRectangle(int x0, int y0, int x1, int y1) {
-  // TODO: implement this method.
+  limits.push_back(*new Point(x0,y0));
+  limits.push_back(*new Point(x0,y1));
+  limits.push_back(*new Point(x1,y0));
+  limits.push_back(*new Point(x1,y1));
 }
