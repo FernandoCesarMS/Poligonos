@@ -6,12 +6,10 @@
 #include <iostream>
 #include "polygon.h"
 
-bool verificaIgual(const Polygon &lhs, const Polygon &rhs)
-{
+bool verificaIgual(const Polygon &lhs, const Polygon &rhs){
     std::vector<Point> v1 = lhs;
     std::vector<Point> v2 = rhs;
-    for (const Point &ponto1 : v1)
-    {
+    for (const Point &ponto1 : v1){
         bool verifica = false;
         for (const Point &ponto2 : v2)
             if (ponto1.contains(ponto2))
@@ -30,8 +28,7 @@ std::ostream& operator << (std::ostream &out, const Polygon &poly) {
 }
 
 bool operator == (const Polygon &lhs, const Polygon &rhs) {
-  // TODO: implement this method.
-  return false;
+  return verificaIgual(lhs, rhs) && verificaIgual(rhs, lhs);
 }
 
 bool Point::contains(const Point& p) const {
