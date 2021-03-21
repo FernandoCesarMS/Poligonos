@@ -41,8 +41,28 @@ std::ostream& operator << (std::ostream &out, const Point &p) {
 }
 
 bool RightRectangle::contains(const Point& p) const {
-  // TODO: implement this method.
-  return false;
+  int verifica = 0, Xmin, Xmax, Ymin, Ymax;
+    for (const Point &ponto : limits){
+        if (verifica == 0){
+            verifica = 1;
+            Xmin = ponto.x;
+            Xmax = ponto.x;
+            Ymin = ponto.y;
+            Ymax = ponto.y;
+        }
+        if (ponto.x > Xmax)
+            Xmax = ponto.x;
+        else if (ponto.x < Xmin)
+            Xmin = ponto.x;
+        if (ponto.y > Ymax)
+            Ymax = ponto.y;
+        else if (ponto.y < Ymin)
+            Ymin = ponto.y;
+    }
+    if (p.x < Xmin || p.x > Xmax || p.y < Ymin || p.y > Ymax)
+        return false;
+    else
+        return true;
 }
 
 Point::Point(int xx, int yy): x(xx), y(yy) {
