@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "polygon.h"
+#include <vector>
 
 Point* readPoint() {
   int x, y;

@@ -6,6 +6,22 @@
 #include <iostream>
 #include "polygon.h"
 
+bool verificaIgual(const Polygon &lhs, const Polygon &rhs)
+{
+    std::vector<Point> v1 = lhs;
+    std::vector<Point> v2 = rhs;
+    for (const Point &ponto1 : v1)
+    {
+        bool verifica = false;
+        for (const Point &ponto2 : v2)
+            if (ponto1.contains(ponto2))
+                verifica = true;
+        if (verifica == false)
+            return false;
+    }
+    return true;
+}
+
 std::ostream& operator << (std::ostream &out, const Polygon &poly) {
   for (const Point& p: poly.limits) {
     out << " " << p;
